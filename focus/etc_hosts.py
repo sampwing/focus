@@ -1,4 +1,3 @@
-#/usr/bin/env python3
 import re
 
 class EtcHosts(object):
@@ -32,6 +31,7 @@ class EtcHosts(object):
         for domain in domains:
             if domain in self.existing_domains:
                 continue
+            self.existing_domains.add(domain)
             line = "127.0.0.1\t{}".format(domain)
             self.lines.append(line)
         self.save()
@@ -47,4 +47,5 @@ class EtcHosts(object):
                     for idx in lines_to_remove[::-1]:
                         # remove the lines in reverse order
                         self.lines.pop(idx)
+                self.existing_domains.remove(domain)
         self.save()

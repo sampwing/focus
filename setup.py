@@ -3,7 +3,11 @@
 from setuptools import setup
 
 setup(
-    name='focus',
+    author='Sam Wing',
     description='disable webpage access for a period of time',
-    author='Sam Wing'
+    entry_points={
+        'console_scripts': ['focus=focus.cli:main']
+    },
+    name='focus',
+    packages=['focus']
 )
