@@ -26,7 +26,11 @@ class Configuration(object):
         config = configparser.ConfigParser()
         config.read_file(open(cls.CONFIG_LOCATION))
 
-        minutes = config[cls.DEFAULT][cls.MINUTES]
+        try:
+            minutes = int(config[cls.DEFAULT][cls.MINUTES])
+        except ValueError:
+            print("minutes must be an integer, not: '{}'".format(config[cls.DEFAULT][cls.MINUTES]))
+
         domains = config[cls.DEFAULT][cls.DOMAINS].split(',')
         print("minutes: {}".format(minutes))
         print("domains: {}".format(domains))
