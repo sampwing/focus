@@ -1,9 +1,9 @@
 #/usr/bin/env python3
 import configparser
 import os
-import re
 import sys
 import validators
+
 from pathlib import Path
 
 def exit():
